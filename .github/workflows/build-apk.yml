@@ -34,6 +34,10 @@ jobs:
       # auto-download compileSdk 36.1 and build-tools
       - name: Set up Android SDK
         uses: android-actions/setup-android@v3
+        with:
+          # The action's default is "tools platform-tools", but the old
+          # "tools" package no longer exists and makes this step fail
+          packages: platform-tools
 
       # The project has no gradlew / gradle-wrapper.jar, so install the
       # exact Gradle version from gradle-wrapper.properties
