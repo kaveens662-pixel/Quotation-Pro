@@ -1,0 +1,34 @@
+package com.example
+
+import android.os.Bundle
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
+import androidx.activity.enableEdgeToEdge
+import androidx.activity.viewModels
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material3.Surface
+import androidx.compose.runtime.getValue
+import androidx.compose.ui.Modifier
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.example.ui.navigation.MainAppNav
+import com.example.ui.theme.QuotationProTheme
+import com.example.ui.viewmodel.QuotationViewModel
+
+class MainActivity : ComponentActivity() {
+    private val viewModel: QuotationViewModel by viewModels()
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
+
+        setContent {
+            val prefs by viewModel.userPreferences.collectAsStateWithLifecycle()
+
+            QuotationProTheme(themeMode = prefs.themeMode) {
+                Surface(modifier = Modifier.fillMaxSize()) {
+                    MainAppNav(viewModel = viewModel)
+                }
+            }
+        }
+    }
+}

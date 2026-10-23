@@ -1,0 +1,6 @@
+{
+  "name": "Quotation Pro",
+  "description": "Professional native quotation maker, financial pricing calculator, recurring expenses manager, and PDF generator.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
